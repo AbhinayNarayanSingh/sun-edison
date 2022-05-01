@@ -1,7 +1,11 @@
 from django.contrib import admin
-from django.apps import apps
+from .models import *
 
-app = apps.get_app_config('core')
+@admin.register(File)
+class FileAdmin(admin.ModelAdmin):
+    list_display = ('pk','user', "document", "description","created")
 
-for model_name, model in app.models.items():
-    admin.site.register(model)
+
+@admin.register(Access)
+class AccessAdmin(admin.ModelAdmin):
+    list_display = ('accessBy', "accessTo", "document", "date")

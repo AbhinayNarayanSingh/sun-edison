@@ -8,5 +8,8 @@ urlpatterns = [
     path("upload/file", FileAPIView.as_view()),
     path("delete/file/<int:pk>", FileAPIView.as_view()),
 
-    path("access-file/<int:pk>", accessFile),
+    path("access-file/<int:pk>", AccessListAPIView.as_view()),
+    path("access-file/create/", AccessCreateAPIView.as_view()),
+
+    path("get/all/user/<int:pk>", UserListAPIView.as_view())
 ]

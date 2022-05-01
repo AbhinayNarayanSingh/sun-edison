@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import SignIn from "./pages/SignIn";
+import Sign from "./pages/SignIn";
 import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ const App = () => {
     <div>
       <Routes>
         {/* Un-Protected Routes */}
-        {!userInfo && <Route path="/sign-in" element={<SignIn />} exact />}
+        {!userInfo && <Route path="/sign-in" element={<Sign />} exact />}
 
         {/* Protected Routes */}
         {userInfo && <Route path="/" element={<Home />} exact auth={true} />}

@@ -30,6 +30,36 @@ export const userAuthenticationReducer = (state = {}, action) => {
 
 //  ! ACTIONS
 
+export const userSignUpAction = (name, email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_AUTHENTICATION_INITIATE });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const body = {
+      name,
+      email,
+      password,
+    };
+
+    const { data } = await axios.post(
+      "http://localhost:8000/api/user/register/",
+      JSON.stringify(body),
+      config
+    );
+    localStorage.setItem("user", JSON.stringify(data));
+
+    dispatch(fileFetchAction(data["_id"]));
+    dispatch(sharedFileFetchAction(data["_id"]));
+    dispatch({ type: USER_AUTHENTICATION_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: USER_AUTHENTICATION_FAIL, payload: error.message });
+  }
+};
+
 export const userAuthenticationAction =
   (email, password) => async (dispatch) => {
     try {

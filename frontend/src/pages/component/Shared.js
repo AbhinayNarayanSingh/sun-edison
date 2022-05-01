@@ -15,23 +15,21 @@ const Shared = ({ shared }) => {
                       <th>#</th>
                       <th>Description</th>
                       <th>Download</th>
-                      <th>Created</th>
-                      <th>Modified</th>
+                      <th>Created By</th>
+                      <th>Email</th>
                     </tr>
                   </thead>
                   <tbody>
                     {shared &&
                       shared.map((n) => (
                         <tr key={n.id}>
-                          <th scope="row">{n.id}</th>
-                          <td>{n.description}</td>
+                          <th scope="row">{n.document["id"]}</th>
+                          <td>{n.document["description"]}</td>
                           <td>
-                            <a href={`http://localhost:8000${n.document}`}>
-                              Download
-                            </a>
+                            <a href={n.document["document"]}>Download</a>
                           </td>
-                          <td>{n.created}</td>
-                          <td>{n.modified}</td>
+                          <td>{n.accessBy["name"]}</td>
+                          <td>{n.accessBy["email"]}</td>
                         </tr>
                       ))}
                   </tbody>

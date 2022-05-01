@@ -12,6 +12,8 @@ import { fileFetchReducer } from "./FileFetchState";
 import { fileUploadReducer } from "./DocumentUploadState";
 import { sharedFileFetchReducer } from "./SharedFileFetchState";
 import { deleteDocumentReducer } from "./DeleteDocumentState";
+import { giveAccessReducer } from "./ShareFileState";
+import { userFetchReducer } from "./AllUser";
 
 const reducer = combineReducers({
   user: userAuthenticationReducer,
@@ -19,6 +21,8 @@ const reducer = combineReducers({
   sharedFile: sharedFileFetchReducer,
   userFileUpload: fileUploadReducer,
   deleteDocument: deleteDocumentReducer,
+  access: giveAccessReducer,
+  allUser: userFetchReducer,
 });
 
 const userFromLocalStorage = localStorage.getItem("user")

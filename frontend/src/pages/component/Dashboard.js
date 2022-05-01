@@ -4,7 +4,7 @@ import { CardBody, Table, Col, Row } from "reactstrap";
 
 import { deleteDocumentAction } from "../../store/DeleteDocumentState";
 
-const Dashboard = ({ document, user_id }) => {
+const Dashboard = ({ document, user_id, setMode, setDocumentId }) => {
   const dispatch = useDispatch();
 
   return (
@@ -21,8 +21,8 @@ const Dashboard = ({ document, user_id }) => {
                       <th>Description</th>
                       <th>Download</th>
                       <th>Created</th>
-                      <th>Modified</th>
                       <th>Action</th>
+                      <th>Give Access</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -37,13 +37,20 @@ const Dashboard = ({ document, user_id }) => {
                             </a>
                           </td>
                           <td>{n.created}</td>
-                          <td>{n.modified}</td>
                           <td
                             onClick={() =>
                               dispatch(deleteDocumentAction(n.id, user_id))
                             }
                           >
                             Delete
+                          </td>
+                          <td
+                            onClick={() => {
+                              setMode("share");
+                              setDocumentId(n.id);
+                            }}
+                          >
+                            Share
                           </td>
                         </tr>
                       ))}
