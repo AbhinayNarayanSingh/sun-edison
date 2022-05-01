@@ -8,4 +8,4 @@ class FileAdmin(admin.ModelAdmin):
 
 @admin.register(Access)
 class AccessAdmin(admin.ModelAdmin):
-    list_display = ('accessBy', "accessTo", "document", "date")
+    list_display = ('accessBy', "accessTo", "document", "timestamp")

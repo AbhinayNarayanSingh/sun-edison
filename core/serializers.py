@@ -19,5 +19,5 @@ class AccessSerializer (serializers.ModelSerializer) :
     accessBy = UserSerializer(many=False)
     class Meta:
         model = Access
-        fields = ["accessBy", "accessTo", "document"]
+        fields = ["accessBy", "accessTo", "document", "timestamp"]
 

@@ -107,11 +107,12 @@ const Home = () => {
                         type="submit"
                         className="btn btn-primary w-md "
                         style={{ width: "200px" }}
-                        onClick={() =>
+                        onClick={() => {
                           dispatch(
                             giveAccessAction(user_id, accessTo, documentId)
-                          )
-                        }
+                          );
+                          setMode("upload");
+                        }}
                       >
                         Share now
                       </p>

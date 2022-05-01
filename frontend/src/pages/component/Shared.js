@@ -1,6 +1,8 @@
 import React from "react";
 import { CardBody, Table, Col, Row } from "reactstrap";
 
+import moment from "moment";
+
 const Shared = ({ shared }) => {
   return (
     <div>
@@ -17,6 +19,7 @@ const Shared = ({ shared }) => {
                       <th>Download</th>
                       <th>Created By</th>
                       <th>Email</th>
+                      <th>Timestamp</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -30,6 +33,7 @@ const Shared = ({ shared }) => {
                           </td>
                           <td>{n.accessBy["name"]}</td>
                           <td>{n.accessBy["email"]}</td>
+                          <td>{moment(n["timestamp"]).format("LLLL")}</td>
                         </tr>
                       ))}
                   </tbody>

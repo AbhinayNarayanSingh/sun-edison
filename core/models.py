@@ -32,7 +32,7 @@ class Access(models.Model):
     accessBy = models.ForeignKey(User, verbose_name=_("Access given by"), on_delete=models.CASCADE,  related_name="given by +")
     accessTo = models.ForeignKey(User, verbose_name=_("Access given to"), on_delete=models.CASCADE, related_name="given to +")
     document = models.ForeignKey(File, verbose_name=_("Document"), on_delete=models.CASCADE)
-    date = models.DateField(_("Timestamp"), auto_now=True)
+    timestamp = models.DateTimeField(auto_now=True)
 
 
     class Meta:

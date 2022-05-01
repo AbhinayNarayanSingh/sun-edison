@@ -1,4 +1,5 @@
 import axios from "axios";
+import { userFetchAction } from "./AllUser";
 import { fileFetchAction } from "./FileFetchState";
 import { sharedFileFetchAction } from "./SharedFileFetchState";
 
@@ -54,6 +55,7 @@ export const userSignUpAction = (name, email, password) => async (dispatch) => {
 
     dispatch(fileFetchAction(data["_id"]));
     dispatch(sharedFileFetchAction(data["_id"]));
+    dispatch(userFetchAction(data["_id"]));
     dispatch({ type: USER_AUTHENTICATION_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_AUTHENTICATION_FAIL, payload: error.message });
@@ -84,6 +86,7 @@ export const userAuthenticationAction =
 
       dispatch(fileFetchAction(data["_id"]));
       dispatch(sharedFileFetchAction(data["_id"]));
+      dispatch(userFetchAction(data["_id"]));
       dispatch({ type: USER_AUTHENTICATION_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: USER_AUTHENTICATION_FAIL, payload: error.message });
